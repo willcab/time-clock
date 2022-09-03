@@ -1,0 +1,19 @@
+<%= form_with model: @store do |form| %>
+  <% @store.errors.full_messages.each do |error|%>
+    <div>
+      <%= error %>
+    </div>
+  <%end%>
+  <div>
+    <%= form.label :name, 'Name:'%>
+    <br>
+    <%= form.text_field :name%>
+  </div>
+  <br>
+  <div>
+    <%= form.label :address,'Address:'%>
+    <br>
+    <%= form.text_area :address%>
+  </div>
+  <%= form.submit%>
+<% end %>

@@ -1,0 +1,8 @@
+
+<h1>Store <%= @store.name %> </h1>
+<p>Address: <%= @store.address %> </p>
+<%= link_to 'Edit store', edit_store_path(@store) %>
+<%= link_to 'Delete store', store_path(@store), data:{
+    turbo_method: :delete,
+    turbo_confirm: 'Are you sure?'
+} %>

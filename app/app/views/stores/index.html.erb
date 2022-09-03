@@ -1,0 +1,9 @@
+<h1>Index Company Branches</h1>
+<%= link_to 'New store', new_store_path %>
+<ul>
+  <% @stores.each do |store| %>
+    <li>
+    <%= link_to store.name.capitalize, store_path(store) %>
+    </li>
+  <% end %>
+</ul>
