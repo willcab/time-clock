@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+unless Store.any?
+  company_branchs=Array.new(5){{name: Faker::Company.name, address: Faker::Address.full_address }}
+  Store.create(company_branchs)
+end
+
+companys=Store.all
+
+companys.each do |company|
+ 10.times do
+  name=Faker::Name.name_with_middle
+  Employee.create(name: name, email: Faker::Internet.email(name: name.split(' ')[0]), position: Faker::Job.position, id_employee: Faker::Number.number(digits: 5), private_number: Faker::Number.number(digits: 5), store: company)
+ end
+
+end

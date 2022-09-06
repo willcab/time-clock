@@ -1,6 +1,15 @@
 
 <h1>Store <%= @store.name %> </h1>
 <p>Address: <%= @store.address %> </p>
+
+<ul>
+  <% @employees.each do |employee| %>
+    <li>
+    <%=link_to employee.name.capitalize, store_employee_path(@store,employee) %>
+    <%=link_to 'new employee', new_store_employee_url(@store) %>
+    </li>
+  <% end %>
+</ul>
 <%= link_to 'Edit store', edit_store_path(@store) %>
 <%= link_to 'Delete store', store_path(@store), data:{
     turbo_method: :delete,

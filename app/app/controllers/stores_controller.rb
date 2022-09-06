@@ -5,6 +5,7 @@ class StoresController < ApplicationController
 
   def show
     @store = Store.find(params[:id])
+    @employees = Employee.where(store: @store)
   end
 
   def new
