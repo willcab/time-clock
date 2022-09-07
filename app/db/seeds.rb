@@ -16,7 +16,11 @@ companys=Store.all
 companys.each do |company|
  10.times do
   name=Faker::Name.name_with_middle
-  Employee.create(name: name, email: Faker::Internet.email(name: name.split(' ')[0]), position: Faker::Job.position, id_employee: Faker::Number.number(digits: 5), private_number: Faker::Number.number(digits: 5), store: company)
- end
+  employee = Employee.create(name: name, email: Faker::Internet.email(name: name.split(' ')[0]), position: Faker::Job.position, id_employee: Faker::Number.number(digits: 5), private_number: Faker::Number.number(digits: 5), store: company)
+  date = Faker::Date.in_date_period
+  log = DailyLog.create(day: date.mday, month: date.strftime("%B"), year: date.year, employee: employee)
+  CheckIn.create(hour:Random.rand(23), minutes:Random.rand(59), daily_log: log)
+  CheckOut.create(hour:Random.rand(23), minutes:Random.rand(59), daily_log: log)
+end
 
 end
