@@ -9,10 +9,10 @@ class EmployeesController < ApplicationController
   end
   
   def update
-    @employee = Employee.find(employee_params)
-      if @employee.update_attributes(params[:employee])
+    @employee = Employee.find(params[:id])
+      if @employee.update(employee_params)
         flash[:success] = "Object was successfully updated"
-        redirect_to @employee
+        redirect_to store_employee_path(@employee.store, @employee)
       else
         flash[:error] = "Something went wrong"
         render 'edit'
@@ -26,7 +26,7 @@ class EmployeesController < ApplicationController
     @employee = Employee.new(employee_params)
     if @employee.save
       flash[:success] = "Object successfully created"
-      redirect_to @employee
+      redirect_to store_employee_path(@employee.store, @employee)
     else
       flash[:error] = "Something went wrong"
       render 'new'
@@ -46,6 +46,6 @@ class EmployeesController < ApplicationController
   
   private
   def employee_params
-    params.require(:employee).permit(:name, :email, :position, :id_employee, :private_number, :store_id)
+    params.require(:employee).permit(:name, :email, :position, :id_employee, :private_number)
   end
 end

@@ -1,0 +1,35 @@
+<%= form_with(url: url, model: @employee) do |form| %>
+  <% @employee.errors.full_messages.each do |error|%>
+    <div>
+      <%= error %>
+    </div>
+  <%end%>
+  <div>
+    <%= form.label :name, 'Name:'%>
+    <br>
+    <%= form.text_field :name%>
+  </div>
+  <br>
+  <div>
+    <%= form.label :email,'Email:'%>
+    <br>
+    <%= form.text_field :email%>
+  </div>
+    <br>
+  <div>
+    <%= form.label :private_number,'Private number:'%>
+    <br>
+    <%= form.text_field :private_number%>
+  </div>  <br>
+  <div>
+    <%= form.label :position,'Position:'%>
+    <br>
+    <%= form.text_field :position%>
+  </div>  <br>
+  <div>
+    <%= form.label :id_employee,'Id number:'%>
+    <br>
+    <%= form.text_field :id_employee%>
+  </div>
+  <%= form.submit%>
+<% end %>

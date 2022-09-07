@@ -1,0 +1,13 @@
+<h2> Employee Details </h2> <br>
+<%= link_to 'Back', store_path(params[:store_id]) %>  
+<%= link_to 'Edit', edit_store_employee_path(params[:store_id], params[:id]) %>
+<section> 
+<div> Name: <%= @employee.name %> <div/>
+<div> Email: <%= @employee.email %> <div/>
+<div> Private number: <%= @employee.private_number %> <div/>
+<div> Position: <%= @employee.position %> <div/>
+<div> Id number: <%= @employee.id_employee %> <div/>
+<section/>
+
+
+<%= link_to 'Deactivate', store_employee_path(params[:store_id], params[:id]), data:{ turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
