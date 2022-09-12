@@ -6,5 +6,5 @@ class Employee < ApplicationRecord
 	validates  :private_number, presence: true
 
 	belongs_to :store
-
+	has_many :dailyLog
 end
