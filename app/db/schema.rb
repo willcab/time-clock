@@ -10,32 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_07_223645) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_12_214734) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "check_ins", force: :cascade do |t|
-    t.integer "hour"
-    t.integer "minutes"
-    t.bigint "daily_log_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["daily_log_id"], name: "index_check_ins_on_daily_log_id"
-  end
-
-  create_table "check_outs", force: :cascade do |t|
-    t.integer "hour"
-    t.integer "minutes"
-    t.bigint "daily_log_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["daily_log_id"], name: "index_check_outs_on_daily_log_id"
-  end
-
   create_table "daily_logs", force: :cascade do |t|
-    t.integer "day"
-    t.string "month"
-    t.integer "year"
+    t.date "day"
+    t.time "checkIn"
+    t.time "checkOut"
     t.bigint "employee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,7 +33,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_223645) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "store_id", null: false
-    t.boolean "status", default: true
     t.index ["store_id"], name: "index_employees_on_store_id"
   end
 
@@ -70,8 +51,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_223645) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "check_ins", "daily_logs"
-  add_foreign_key "check_outs", "daily_logs"
   add_foreign_key "daily_logs", "employees"
   add_foreign_key "employees", "stores"
 end
