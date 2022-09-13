@@ -31,5 +31,6 @@
     <br>
     <%= form.text_field :id_employee%>
   </div>
+  <%= form.hidden_field :store_id, value: params[:store_id] %>
   <%= form.submit%>
 <% end %>

@@ -17,7 +17,7 @@ companys.each do |company|
  10.times do
   name=Faker::Name.name_with_middle
   emp=Employee.create(name: name, email: Faker::Internet.email(name: name.split(' ')[0]), position: Faker::Job.position, id_employee: Faker::Number.number(digits: 5), private_number: Faker::Number.number(digits: 5), store: company)
-  DailyLog.create!(day:today, checkIn:'05:30:00', checkOut:'10:30:00',employee:emp)
+  DailyLog.create!(day: Date.current, checkIn:'05:30:00', checkOut:'10:30:00',employee:emp)
  end
 
 end
