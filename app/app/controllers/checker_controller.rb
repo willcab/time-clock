@@ -17,7 +17,10 @@ class CheckerController < ApplicationController
 			elsif @log.checkOut.nil?
 				@log.update(checkOut: Time.now)
 				redirect_to '/', notice: 'successfully checker'
+			else
+				redirect_to '/', notice: 'Employee had already checked out'
 			end
+		end
 	end
 
 end
