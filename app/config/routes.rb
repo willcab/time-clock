@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   # /store/1/employees
-  #root "/stores"
+  root '/', action: :show, controller: 'checker'
+  post '/', action: :register, controller: 'checker'
   resources :stores do
     resources :employees
   end

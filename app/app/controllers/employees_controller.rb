@@ -18,6 +18,7 @@ class EmployeesController < ApplicationController
         render 'edit'
       end
   end
+
   def new
     @employee = Employee.new
   end
@@ -46,6 +47,6 @@ class EmployeesController < ApplicationController
   
   private
   def employee_params
-    params.require(:employee).permit(:name, :email, :position, :id_employee, :private_number)
+    params.require(:employee).permit(:name, :email, :position, :id_employee, :private_number, :store_id)
   end
 end
