@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # /store/1/employees
   root '/', action: :show, controller: 'checker'
   post '/', action: :register, controller: 'checker'
+  get '/report', action: :report, controller: 'checker'
   resources :stores do
     resources :employees
   end
