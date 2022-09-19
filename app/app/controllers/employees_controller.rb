@@ -3,7 +3,6 @@ class EmployeesController < ApplicationController
     @employee = Employee.find(params[:id])
   end
   
-
   def edit
     @employee = Employee.find(params[:id])
   end
@@ -14,8 +13,7 @@ class EmployeesController < ApplicationController
         flash[:success] = "Object was successfully updated"
         redirect_to store_employee_path(@employee.store, @employee)
       else
-        flash[:error] = "Something went wrong"
-        render 'edit'
+        render 'edit', status: :unprocessable_entity
       end
   end
 
@@ -30,19 +28,15 @@ class EmployeesController < ApplicationController
       redirect_to store_employee_path(@employee.store, @employee)
     else
       flash[:error] = "Something went wrong"
-      render 'new'
+      render 'new', status: :unprocessable_entity
     end
   end
 
   def destroy
     @employee = Employee.find(params[:id])
-    if @employee.destroy
-      flash[:success] = 'Object was successfully deleted.'
-      redirect_to employee_url
-    else
-      flash[:error] = 'Something went wrong'
-      redirect_to employee_url
-    end
+    @employee.status = !@employee.status
+    @employee.save
+    redirect_to store_path(@employee.store), notice: @employee.status ? "Employee is active" : "Employee is deactivated", status: 303
   end
   
   private

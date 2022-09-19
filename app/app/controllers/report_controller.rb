@@ -1,6 +1,13 @@
 class ReportController < ApplicationController
   def index
-    @reports = DailyLog.where("EXTRACT(MONTH FROM day) = 9").joins("INNER JOIN employees ON employees.status = true").to_a.count -(Employee.where("status = true").to_a.count*Time.days_in_month(Time.current.month))
   end
 
+  def search_by_day
+  	@reports = DailyLog.search_by_month(9).search_by_day(15).joins(:employee).merge(Employee.active_employees)
+  end
+
+  def search_by_month
+  	@reports = DailyLog.search_by_month(9).joins(:employee).merge(Employee.active_employees)
+   end 
+   
 end
