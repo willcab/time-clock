@@ -8,6 +8,5 @@ class ReportController < ApplicationController
 
   def search_by_month
   	@reports = DailyLog.search_by_month(9).joins(:employee).merge(Employee.active_employees)
-   end 
-   
+  end
 end

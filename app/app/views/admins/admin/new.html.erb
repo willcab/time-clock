@@ -1,0 +1,8 @@
+<%= form_with url:admin_index_path do |form| %>
+  <div>
+    <%= form.label :password, 'Password:'%>
+    <br>
+    <%= form.text_field :password%>
+  </div>
+  <%= form.submit 'login' %>
+<% end %>
