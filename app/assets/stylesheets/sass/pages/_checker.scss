@@ -1,0 +1,31 @@
+@use '../abstracts/variables';
+.checker{
+  margin: 0 auto;
+  margin-top: 25vh;
+  width: 50%;
+  align-items: center;
+  &-text-field{
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 50%;
+    height: 60px;
+  }
+  &-main{
+    margin-bottom: 50px;
+  }
+}
+
+.time-clock{
+  display: flex;
+  background-color:black; 
+  border-radius: 10px;
+  justify-content: center;
+  margin: 0 auto;
+  span{
+    color: variables.$clock-digit-color;
+    font-size: 10rem;
+  }
+  .hours .minutes .seconds{
+    font-size: 4rem;
+  }
+}

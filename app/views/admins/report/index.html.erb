@@ -1,0 +1,71 @@
+<div class="container text-center report">
+  <h1 class="text-left"> Reports </h1>
+  <section class="report">
+      <div class="report-monthly">
+        <h1 class="text-danger"><%=Date::MONTHNAMES[@month.to_i]%> of <%= @year%></h1>
+      <%if !@monthly_reports.empty? %>
+          <div class="report-avg">
+            <span>Absence this month: <%=@absence %> </span>
+            <span>Average check_in time: <%=@avg_check_in[0]%>:<%=@avg_check_in[1]%></span>
+            <span>Average check_out time: <%=@avg_check_out[0]%>:<%=@avg_check_out[1]%></span>
+          </div>
+        </div>
+        <div class="report-attendance">
+          <table class="table table-striped">
+            <caption class="text-danger">Attendance by day:</caption>
+            <%(@days_in_month/7).times do |row|%>
+              <thead>
+                <%7.times do |column|%>
+                  <th>
+                    <%=(column+1)+(row)*7%><br>
+                  </th>
+                <%end%>
+              </thead>
+              <tbody>
+              <tr>
+                <%7.times do |column|%>
+                  <td>
+                    <%=@attendance[column+row*7]%>/<%=@active_employees%>
+                  </td>
+                <%end%>
+              </tr>
+              </tbody>
+            <%end%>
+            <thead>
+              <%(@days_in_month%7).times do |column| %>
+                <th>
+                  <%= (column+1)+@days_in_month-@days_in_month%7 %><br>
+                </th>
+              <% end %>
+            </thead>
+            <tbody>
+            <tr>
+              <%(@days_in_month%7).times do |column| %>
+                <td>
+                  <%=@attendance[column+@days_in_month-@days_in_month%7]%>/<%=@active_employees%>
+                </td>
+              <% end %>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      <%else%>
+        </div>
+        <div class="report-no-data">
+          <h1>No data found for this month</h1>
+        </div>
+      <%end%>
+  </section>
+  <section class="report-form">
+  <p>Generate report for:</p>
+  <%= form_with url: report_index_path, method: :get do |form| %>
+    <div class="">
+      <%= form.label :month, "Month: " %>
+      <%= select_month Date.today, class: "form-select form-select-lg mb-3"%>
+      <%= form.label :year, "Year: " %>
+      <%= select_year Date.today, class: "form-select form-select-lg mb-3" %>
+      <%= form.submit "Submit" %>
+    </div>
+  <% end %>
+  </section>
+</div>

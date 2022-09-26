@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reports</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= stylesheet_link_tag "bootstrap.min", media: "all", "data-turbo-track" => "reload" %>
+    <%= stylesheet_link_tag "app", media: "all", "data-turbo-track" => "reload" %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
+  
+  <body>
+    <%= notice %>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<%= form_with model: @store do |form| %>
+  <% @store.errors.full_messages.each do |error|%>
+    <div>
+      <%= error %>
+    </div>
+  <% end %>
+
+  <form>
+    <div class="mb-3">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <%= form.text_field :name, class: "formGroupExampleInput", placeholder: "Name", placeholder: "Name", class: " form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <%= form.text_area :address, class:"form-control", id:"exampleFormControlTextarea1", placeholder: "Address"%>
+      </div>
+      <div>
+      <br>
+        <%= form.submit 'Create Store', class: "btn btn-primary" %>
+      </div>
+  </form>
+  
+<% end %>

@@ -1,0 +1,35 @@
+<h1>Index Company Branches</h1>
+
+<%= link_to 'New store', new_store_path %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"> 
+        <h2>Name company</h2> 
+        <h5> <%== pagy_nav(@pagy) %> </h5>
+
+        <%# <%= f.text_field :query_text, placeholder: "query_text" %> 
+        <%# <%= form.text_field :query_text, placeholder: "query_text", onChange: "this.form.requestSubmit()", value: params[:query_text] %> 
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <h4>Stores:
+      <%= @stores.count%>
+      /
+      <%= Store.count%>
+    </h4>
+ 
+      <% @stores.each do |store| %>
+       
+        <tr>
+          <th scope="row">
+            <p>
+              <%= link_to store.name.capitalize, store_path(store) %>
+            </p>  
+          </th>
+        </tr>
+      <% end %>
+  </tbody>
+</table>

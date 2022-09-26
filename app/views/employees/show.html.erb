@@ -1,0 +1,44 @@
+<table>
+  <thead>
+    <tr>
+      <h2> Employee Details </h2>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>
+        <div> Name: <%= @employee.name %> </div>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <div> Email: <%= @employee.email %> </div>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <div> Private number: <%= @employee.private_number %> </div>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <div> Position: <%= @employee.position %> </div>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <div> Id number: <%= @employee.id_employee %> </div>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <div> Status: <%= @employee.status ? 'active' : 'inactive '%> </div>
+      </th>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'Back', store_path(params[:store_id]) %>
+<%= link_to 'Edit', edit_store_employee_path(params[:store_id], params[:id]) %>
+<%= link_to 'Change status', store_employee_path(params[:store_id], params[:id]), data:{ turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>

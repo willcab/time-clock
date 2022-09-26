@@ -1,0 +1,38 @@
+<%= form_with(url: url, model: @employee) do |form| %>
+  <% @employee.errors.full_messages.each do |error|%>
+    <div>
+      <%= error %>
+    </div>
+  <%end%>
+
+  <form>
+    <div class="mb-3">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <%= form.text_field :name, class: "formGroupExampleInput", placeholder: "Name", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="Email">Email address</label>
+        <%= form.text_field :email, type: "email", class: "form-control", id: "exampleInputEmail1", placeholder: "Email@mail.com" %>
+      </div>
+      <label for="number">Private number</label>
+        <%= form.text_field :private_number, class: "formGroupExampleInput", placeholder: "12345", class: "form-control", type: "number" %>
+      </div>
+      <div class="form-group">
+        <label for="position">Position</label>
+        <%= form.text_field :position, class: "formGroupExampleInput", placeholder: "position", class: "form-control" %>
+      </div>
+      <div>
+        <label for="number">Id employee:</label>
+        <%= form.text_field :id_employee, class: "formGroupExampleInput", placeholder: "12345", class: "form-control", type: "number" %>
+      </div>
+      <div>
+        <%= form.hidden_field :store_id, value: params[:store_id] %>
+      </div>
+      <br>
+      <div>
+        <%= form.submit 'Create Employee', class: "btn btn-primary" %>
+      </div>
+  </form>
+  
+<% end %>

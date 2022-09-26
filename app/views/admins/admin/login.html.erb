@@ -1,0 +1,30 @@
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Login #09</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap py-5">
+		      	<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/bg.jpg);"></div>
+		      	<h3 class="text-center mb-0">Welcome</h3>
+		      	<p class="text-center">Sign in by entering the information below</p>
+						<%= form_with url:admin_index_path do |form| %>
+						<div>
+							<%= form.label :password, 'Password:'%>
+							<br>
+							<%= form.text_field :password%>
+						</div>
+						<%= form.submit 'login' %>
+					<% end %>
+	          <div class="w-100 text-center mt-4 text">
+	          	<p class="mb-0">Don't have an account?</p>
+		          <a href="#">Sign Up</a>
+	          </div>
+	        </div>
+				</div>
+			</div>
+		</div>
+	</section>
